@@ -10,7 +10,13 @@
   },
   "scripts": {
     "dev": "next",
+    "test": "jest",
     "build": "next build",
     "start": "next start"
+  },
+  "devDependencies": {
+    "jest": "24.0.0",
+    "jest-dom": "3.0.1",
+    "react-testing-library": "5.4.4"
   }
 }
