@@ -14,7 +14,8 @@
     "build": "next build",
     "start": "next start",
     "deploy": "now -e NODE_ENV='production' alias $(now) burfield-questionaire",
-    "deploy:ci": "now --token=$NOW -e NODE_ENV='production'"
+    "deploy:ci": "now --token=$NOW -e NODE_ENV='production'",
+    "alias:ci": "now alias --token=$NOW_TOKEN"
   },
   "devDependencies": {
     "@now/next": "0.0.83",
