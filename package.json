@@ -14,12 +14,13 @@
     "build": "next build",
     "start": "next start",
     "deploy": "now -e NODE_ENV='production' alias $(now) burfield-questionaire",
-    "deploy:ci": "now --token=$NOW -e NODE_ENV='production'"
+    "deploy:ci": "now --token=$NOW -e NODE_ENV='production' alias $(now) burfield-questionaire"
   },
   "devDependencies": {
     "@now/next": "0.0.83",
     "jest": "24.0.0",
     "jest-dom": "3.0.1",
+    "now": "13.1.2",
     "react-testing-library": "5.4.4"
   }
 }
