@@ -13,7 +13,8 @@
     "test": "jest",
     "build": "next build",
     "start": "next start",
-    "deploy": "now alias $(now) burfield-questionaire"
+    "deploy": "now --token=$NOW -e NODE_ENV='production' alias $(now) burfield-questionaire",
+    "deploy:ci": "now -e NODE_ENV='production' alias $(now) burfield-questionaire"
   },
   "devDependencies": {
     "@now/next": "0.0.83",
