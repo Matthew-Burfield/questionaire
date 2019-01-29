@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import PropTypes from "prop-types";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 
 type Question = {
   id: number;
@@ -14,20 +15,38 @@ type Question = {
   hasBeenApproved: boolean;
 };
 
-type Props = {
-  questions: [Question];
-};
+const QUESTIONS_QUERY = gql`
+  query QUESTIONS_QUERY {
+    questions {
+      id
+      sessionId
+      question
+      thumbsUpCount
+      thumbsDownCount
+      hasBeenAsked
+      hasBeenApproved
+    }
+  }
+`;
 
-const QuestionList = (props: Props) => (
+const QuestionList = () => (
   <Fragment>
     <h2>List of questions</h2>
-    <List dense={false}>
-      {props.questions.map(question => (
-        <ListItem key={question.id}>
-          <ListItemText primary={question.question} />
-        </ListItem>
-      ))}
-    </List>
+    <Query query={QUESTIONS_QUERY}>
+      {({ data, error, loading }) => {
+        if (error) console.error(error);
+        if (loading) console.log("loading...");
+        return (
+          <List dense={false}>
+            {data.questions.map(question => (
+              <ListItem key={question.id}>
+                <ListItemText primary={question.question} />
+              </ListItem>
+            ))}
+          </List>
+        );
+      }}
+    </Query>
   </Fragment>
 );
 
