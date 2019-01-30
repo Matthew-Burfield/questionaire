@@ -50,8 +50,4 @@ const QuestionList = () => (
   </Fragment>
 );
 
-QuestionList.defaultProps = {
-  questions: []
-};
-
 export default QuestionList;
