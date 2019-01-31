@@ -4,6 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import NewQuestion from "./NewQuestion";
 
 type Question = {
   id: number;
@@ -36,9 +37,10 @@ const QuestionList = () => (
       {({ data, error, loading }) => {
         if (error) console.error(error);
         if (loading) console.log("loading...");
+        const questions = data && data.questions ? data.questions : [];
         return (
           <List dense={false}>
-            {data.questions.map(question => (
+            {questions.map(question => (
               <ListItem key={question.id}>
                 <ListItemText primary={question.question} />
               </ListItem>
