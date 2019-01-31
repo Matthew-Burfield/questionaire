@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import Input from "@material-ui/core/Input";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import { QUESTIONS_QUERY } from "./QuestionList";
 
 const NEW_QUESTION_MUTATION = gql`
   mutation NEW_QUESTION_MUTATION($question: String!) {
@@ -19,8 +20,16 @@ const NEW_QUESTION_MUTATION = gql`
 
 export default () => {
   const [question, setValue] = useState("");
-  const update = () => {
+  const update = (cache, { data: { addQuestion } }) => {
     console.warn("UPDATE!");
+    const data = cache.readQuery({ query: QUESTIONS_QUERY });
+    const questions = [...data.questions, addQuestion];
+    cache.writeQuery({
+      query: QUESTIONS_QUERY,
+      data: {
+        questions
+      }
+    });
   };
   return (
     <Fragment>

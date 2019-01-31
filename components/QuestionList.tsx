@@ -16,7 +16,7 @@ type Question = {
   hasBeenApproved: boolean;
 };
 
-const QUESTIONS_QUERY = gql`
+export const QUESTIONS_QUERY = gql`
   query QUESTIONS_QUERY {
     questions {
       id
