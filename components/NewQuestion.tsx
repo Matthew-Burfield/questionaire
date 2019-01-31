@@ -24,6 +24,7 @@ export default () => {
     console.warn("UPDATE!");
     const data = cache.readQuery({ query: QUESTIONS_QUERY });
     const questions = [...data.questions, addQuestion];
+    setValue("");
     cache.writeQuery({
       query: QUESTIONS_QUERY,
       data: {

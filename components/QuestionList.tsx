@@ -39,7 +39,7 @@ const QuestionList = () => (
         if (loading) console.log("loading...");
         const questions = data && data.questions ? data.questions : [];
         return (
-          <List dense={false}>
+          <List dense>
             {questions.map(question => (
               <ListItem key={question.id}>
                 <ListItemText primary={question.question} />
