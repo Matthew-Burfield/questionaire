@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import { QUESTIONS_QUERY } from "./QuestionList";
 
-const NEW_QUESTION_MUTATION = gql`
+export const NEW_QUESTION_MUTATION = gql`
   mutation NEW_QUESTION_MUTATION($question: String!) {
     addQuestion(question: $question) {
       id
