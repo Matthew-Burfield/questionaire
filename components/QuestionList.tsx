@@ -35,14 +35,21 @@ const QuestionList = () => (
     <h2>List of questions</h2>
     <Query query={QUESTIONS_QUERY}>
       {({ data, error, loading }) => {
-        if (error) console.error(error);
-        if (loading) console.log("loading...");
+        if (error) {
+          console.error(error);
+        }
+        if (loading) {
+          console.log("loading...");
+        }
         const questions = data && data.questions ? data.questions : [];
         return (
           <List dense>
             {questions.map(question => (
               <ListItem key={question.id}>
-                <ListItemText primary={question.question} />
+                <ListItemText
+                  data-testid="question"
+                  primary={question.question}
+                />
               </ListItem>
             ))}
           </List>

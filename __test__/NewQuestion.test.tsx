@@ -1,7 +1,6 @@
 // import { mount } from "enzyme";
 // import toJSON from "enzyme-to-json";
 import { render, waitForElement } from "react-testing-library";
-// import wait from "waait";
 // import CreateItem, { CREATE_ITEM_MUTATION } from "../components/CreateItem";
 import { MockedProvider } from "react-apollo/test-utils";
 import NewQuestion, { NEW_QUESTION_MUTATION } from "../components/NewQuestion";
