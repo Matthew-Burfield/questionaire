@@ -61,25 +61,4 @@ describe("<NewQuestion />", () => {
       </MockedProvider>
     );
   });
-
-  // it("Should add a new question", () => {
-  //   const wrapper = render(
-  //     <MockedProvider mocks={mocks}>
-  //       <NewQuestion />
-  //     </MockedProvider>
-  //   );
-  //   console.log(wrapper.debug());
-  // });
-
-  // it("should upload an image", () => {
-  //   console.log("hi");
-  //   const wrapper = mount(
-  //     <MockedProvider mocks={mocks}>
-  //       <CreateItem />
-  //     </MockedProvider>
-  //   );
-  //   console.log("here");
-  //   const fileInput = wrapper.find('input[type="file"]');
-  //   console.log(fileInput.debug());
-  // });
 });

@@ -2720,6 +2720,15 @@ dom-helpers@^3.2.1, dom-helpers@^3.3.1:
   dependencies:
     "@babel/runtime" "^7.1.2"
 
+dom-testing-library@3.12.2:
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.12.2.tgz#9828a94f6c505780bb1e1e9e29afd319594e01a4"
+  integrity sha512-kMj5UFm5lSxnMDtD6XWkJuzK0CX+XdMd5NSnvtpneeYQFORTF5Q5C6mdweH6hhwFcKYzAsHCfnvldg9c8HuFOA==
+  dependencies:
+    "@sheerun/mutationobserver-shim" "^0.3.2"
+    pretty-format "^23.6.0"
+    wait-for-expect "^1.0.0"
+
 dom-testing-library@^3.13.1:
   version "3.16.5"
   resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.16.5.tgz#8c71f127c6b4ee48115660798040291b59dfc894"
@@ -5852,6 +5861,14 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
+pretty-format@^23.6.0:
+  version "23.6.0"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-23.6.0.tgz#5eaac8eeb6b33b987b7fe6097ea6a8a146ab5760"
+  integrity sha512-zf9NV1NSlDLDjycnwm6hpFATCGl/K1lt0R/GdkAK2O5LN/rwJoB+Mh93gGJjut4YbmecbfgLWVGSTCr0Ewvvbw==
+  dependencies:
+    ansi-regex "^3.0.0"
+    ansi-styles "^3.2.0"
+
 pretty-format@^24.0.0:
   version "24.0.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-24.0.0.tgz#cb6599fd73ac088e37ed682f61291e4678f48591"
@@ -7386,6 +7403,13 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
+user-event@1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/user-event/-/user-event-1.4.4.tgz#2a929e2fc25f20d48c0f2104508cca39cf456f87"
+  integrity sha512-WU+ppUNWsNao08rz2WJ0h+Jt+YNNI0oanMjOvLu7C8Da0k5hIb5n6EkIvD6Eyp45hlQIxQ6qqRuUl8btLc3AmQ==
+  dependencies:
+    dom-testing-library "3.12.2"
+
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -7454,7 +7478,7 @@ w3c-hr-time@^1.0.1:
   dependencies:
     browser-process-hrtime "^0.1.2"
 
-wait-for-expect@^1.1.0:
+wait-for-expect@^1.0.0, wait-for-expect@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-1.1.0.tgz#6607375c3f79d32add35cd2c87ce13f351a3d453"
   integrity sha512-vQDokqxyMyknfX3luCDn16bSaRcOyH6gGuUXMIbxBLeTo6nWuEWYqMTT9a+44FmW8c2m6TRWBdNvBBjA1hwEKg==

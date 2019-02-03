@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import Input from "@material-ui/core/Input";
+import TextField from "@material-ui/core/TextField";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import { QUESTIONS_QUERY } from "./QuestionList";
@@ -32,6 +32,9 @@ export default () => {
       }
     });
   };
+  const handleChange = e => {
+    setValue(e.currentTarget.value);
+  };
   return (
     <Fragment>
       <h2>Enter a new question</h2>
@@ -55,12 +58,14 @@ export default () => {
                 const response = await addQuestion();
               }}
             >
-              <Input
-                fullWidth
-                multiline
-                onChange={e => setValue(e.currentTarget.value)}
-                placeholder="Type your question here"
+              <TextField
+                id="question"
+                label="Question"
+                // className={classes.textField}
                 value={question}
+                onChange={handleChange}
+                margin="normal"
+                variant="filled"
               />
               <button type="submit">Submit</button>
             </form>

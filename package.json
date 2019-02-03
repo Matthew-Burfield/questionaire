@@ -33,6 +33,7 @@
     "jest": "24.0.0",
     "jest-dom": "3.0.1",
     "now": "13.1.2",
-    "react-testing-library": "5.4.4"
+    "react-testing-library": "5.4.4",
+    "user-event": "1.4.4"
   }
 }

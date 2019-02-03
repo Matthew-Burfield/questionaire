@@ -1,7 +1,11 @@
-import { render, wait, queryByText } from "react-testing-library";
+import { render, wait } from "react-testing-library";
+import userEvent from "user-event";
 import { MockedProvider } from "react-apollo/test-utils";
-import QuestionList, { QUESTIONS_QUERY } from "../components/QuestionList";
+import Index from "../pages/index";
+import { QUESTIONS_QUERY } from "../components/QuestionList";
+import { NEW_QUESTION_MUTATION } from "../components/NewQuestion";
 
+const question = "Is this the meaning of life?";
 const mocks = [
   {
     request: {
@@ -43,22 +47,49 @@ const mocks = [
         ]
       }
     }
+  },
+  {
+    request: {
+      query: NEW_QUESTION_MUTATION,
+      variables: {
+        question
+      }
+    },
+    result: {
+      data: {
+        addQuestion: {
+          hasBeenApproved: false,
+          hasBeenAsked: false,
+          id: "10",
+          question,
+          sessionId: "1",
+          thumbsDownCount: 0,
+          thumbsUpCount: 0,
+          __typename: "Question"
+        }
+      }
+    }
   }
 ];
 
-describe("<QuestionList />", () => {
-  test("should render", async () => {
-    const { debug, container, getByTestId } = render(
+describe("<index />", () => {
+  test("should add a new question to the list", async () => {
+    const { debug, container, getByTestId, getByText, getByLabelText } = render(
       <MockedProvider mocks={mocks}>
-        <QuestionList />
+        <Index />
       </MockedProvider>
     );
     await wait();
     const questions = container.querySelectorAll("span");
-    const [question1, question2, question3] = questions;
     expect(questions).toHaveLength(3);
-    expect(question1.innerHTML).toBe("Question 1");
-    expect(question2.innerHTML).toBe("Question 2");
-    expect(question3.innerHTML).toBe("Question 3");
+
+    userEvent.type(getByLabelText("Question"), question);
+    userEvent.click(getByText("Submit"));
+    await wait();
+
+    const newQuestions = container.querySelectorAll("span");
+    expect(newQuestions).toHaveLength(4);
+    const newQuestion = getByText(question);
+    expect(newQuestion).toBeDefined();
   });
 });
