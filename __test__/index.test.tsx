@@ -91,5 +91,8 @@ describe("<index />", () => {
     expect(newQuestions).toHaveLength(4);
     const newQuestion = getByText(question);
     expect(newQuestion).toBeDefined();
+
+    // Make sure new question is added to the end of the list
+    expect(newQuestions[3].innerHTML).toBe(question);
   });
 });
