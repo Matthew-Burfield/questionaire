@@ -1,5 +1,6 @@
 {
   "name": "questionaire",
+  "license": "MIT",
   "dependencies": {
     "@emotion/core": "10.0.6",
     "@emotion/styled": "10.0.6",
@@ -12,7 +13,7 @@
     "babel-plugin-emotion": "10.0.6",
     "graphql": "14.1.1",
     "graphql-tag": "2.10.1",
-    "next": "7.0.2",
+    "next": "^8.0.0-canary.7",
     "next-with-apollo": "3.3.2",
     "react": "16.8.0-alpha.1",
     "react-apollo": "2.4.1",
@@ -22,18 +23,26 @@
     "dev": "next",
     "test": "jest",
     "build": "next build",
+    "now-build": "next build",
     "start": "next start",
-    "deploy": "now --alias=burfield-questionaire -e NODE_ENV='production'",
+    "deploy": "now -e NODE_ENV='production'",
     "deploy:ci": "now --token=$NOW -e NODE_ENV='production'",
     "alias:ci": "now alias --token=$NOW"
   },
   "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@now/build-utils": "0.4.32",
     "@now/next": "0.0.83",
+    "dotenv-webpack": "1.7.0",
     "eslint": "5.12.1",
     "jest": "24.0.0",
     "jest-dom": "3.0.1",
     "now": "13.1.2",
     "react-testing-library": "5.4.4",
-    "user-event": "1.4.4"
+    "user-event": "1.4.4",
+    "webpack": "4.29.0"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
   }
 }
