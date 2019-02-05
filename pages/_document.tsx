@@ -27,12 +27,11 @@ class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Questionaire</title>
           <style dangerouslySetInnerHTML={{ __html: css }} />
           <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="/static/assets/favicon.ico"
+            href="/static/favicon.ico"
           />
         </Head>
 
