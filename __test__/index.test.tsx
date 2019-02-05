@@ -80,14 +80,14 @@ describe("<index />", () => {
       </MockedProvider>
     );
     await wait();
-    const questions = container.querySelectorAll("span");
+    const questions = container.querySelectorAll("li");
     expect(questions).toHaveLength(3);
 
     userEvent.type(getByLabelText("Question"), question);
     userEvent.click(getByText("Submit"));
     await wait();
 
-    const newQuestions = container.querySelectorAll("span");
+    const newQuestions = container.querySelectorAll("li");
     expect(newQuestions).toHaveLength(4);
     const newQuestion = getByText(question);
     expect(newQuestion).toBeDefined();

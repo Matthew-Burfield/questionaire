@@ -33,10 +33,10 @@ const QuestionList = () => (
     <Query query={QUESTIONS_QUERY}>
       {({ data, error, loading }) => {
         if (error) {
-          console.error(error);
+          return <div>Error: {error}</div>;
         }
         if (loading) {
-          console.log("loading...");
+          return <div>Loading...</div>;
         }
         const questions = data && data.questions ? data.questions : [];
         return (

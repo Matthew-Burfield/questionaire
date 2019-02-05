@@ -21,7 +21,6 @@ export const NEW_QUESTION_MUTATION = gql`
 export default () => {
   const [question, setValue] = useState("");
   const update = (cache, { data: { addQuestion } }) => {
-    console.warn("UPDATE!");
     const data = cache.readQuery({ query: QUESTIONS_QUERY });
     const questions = [...data.questions, addQuestion];
     setValue("");
@@ -45,10 +44,10 @@ export default () => {
       >
         {(addQuestion, { loading, error }) => {
           if (error) {
-            console.error(`ERROR: ${error}`);
+            return <div>Error: {error}</div>;
           }
           if (loading) {
-            console.log("loading...");
+            return <div>Loading...</div>;
           }
           return (
             <form
