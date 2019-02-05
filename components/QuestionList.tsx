@@ -1,7 +1,4 @@
 import React, { Fragment } from "react";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import NewQuestion from "./NewQuestion";
@@ -43,16 +40,13 @@ const QuestionList = () => (
         }
         const questions = data && data.questions ? data.questions : [];
         return (
-          <List dense>
+          <div>
             {questions.map(question => (
-              <ListItem key={question.id}>
-                <ListItemText
-                  data-testid="question"
-                  primary={question.question}
-                />
-              </ListItem>
+              <li key={question.id} data-testid="question">
+                {question.question}
+              </li>
             ))}
-          </List>
+          </div>
         );
       }}
     </Query>

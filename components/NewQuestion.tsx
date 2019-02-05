@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import TextField from "@material-ui/core/TextField";
+import { TextInputField } from "evergreen-ui";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import { QUESTIONS_QUERY } from "./QuestionList";
@@ -58,14 +58,11 @@ export default () => {
                 const response = await addQuestion();
               }}
             >
-              <TextField
+              <TextInputField
                 id="question"
                 label="Question"
-                // className={classes.textField}
                 value={question}
                 onChange={handleChange}
-                margin="normal"
-                variant="filled"
               />
               <button type="submit">Submit</button>
             </form>
