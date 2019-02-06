@@ -6,6 +6,9 @@ import gql from "graphql-tag";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import { withStyles } from "@material-ui/core/styles";
 import NewQuestion from "./NewQuestion";
 
 type Question = {
@@ -32,7 +35,22 @@ export const QUESTIONS_QUERY = gql`
   }
 `;
 
-const QuestionList = () => (
+const styles = theme => ({
+  thumbsUp: {
+    color: "blue",
+    "&:hover": {
+      color: theme.primary
+    }
+  },
+  thumbsDown: {
+    color: "red",
+    "&:hover": {
+      color: theme.secondary
+    }
+  }
+});
+
+const QuestionList = props => (
   <Fragment>
     <h2>List of questions</h2>
     <Query query={QUESTIONS_QUERY}>
@@ -48,6 +66,8 @@ const QuestionList = () => (
           <List>
             {questions.map(question => (
               <ListItem key={question.id} data-testid="question">
+                <ThumbUpIcon className={props.thumbsUp} />
+                <ThumbDownIcon className={props.thumbsDown} />
                 <ListItemText primary={question.question} />
               </ListItem>
             ))}
@@ -58,4 +78,4 @@ const QuestionList = () => (
   </Fragment>
 );
 
-export default QuestionList;
+export default withStyles(styles)(QuestionList);
