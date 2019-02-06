@@ -54,7 +54,7 @@ describe("<QuestionList />", () => {
       </MockedProvider>
     );
     await wait();
-    const questions = container.querySelectorAll("li");
+    const questions = container.querySelectorAll("span");
     const [question1, question2, question3] = questions;
     expect(questions).toHaveLength(3);
     expect(question1.innerHTML).toBe("Question 1");

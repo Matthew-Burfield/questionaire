@@ -80,19 +80,54 @@ describe("<index />", () => {
       </MockedProvider>
     );
     await wait();
-    const questions = container.querySelectorAll("li");
+    const questions = container.querySelectorAll("li[data-testid='question']");
     expect(questions).toHaveLength(3);
 
     userEvent.type(getByLabelText("Question"), question);
-    userEvent.click(getByText("Submit"));
+    userEvent.click(container.querySelector("button[type='submit']"));
     await wait();
 
-    const newQuestions = container.querySelectorAll("li");
+    const newQuestions = container.querySelectorAll(
+      "li[data-testid='question']"
+    );
     expect(newQuestions).toHaveLength(4);
     const newQuestion = getByText(question);
     expect(newQuestion).toBeDefined();
 
     // Make sure new question is added to the end of the list
-    expect(newQuestions[3].innerHTML).toBe(question);
+    expect(newQuestions[3].innerHTML.includes(question)).toBe(true);
   });
+
+  const aa = [
+    <li
+      class="MuiListItem-root-y7zmik MuiListItem-default-etbuqc MuiListItem-gutters-1kxa4ur"
+      data-testid="question"
+    >
+      <div class="MuiListItemText-root-1gfkmoy">
+        <span class="MuiTypography-root-1o8c6gf MuiTypography-subheading-139ksqs MuiListItemText-primary-1vbj7lg">
+          Question 1
+        </span>
+      </div>
+    </li>,
+    <li
+      class="MuiListItem-root-y7zmik MuiListItem-default-etbuqc MuiListItem-gutters-1kxa4ur"
+      data-testid="question"
+    >
+      <div class="MuiListItemText-root-1gfkmoy">
+        <span class="MuiTypography-root-1o8c6gf MuiTypography-subheading-139ksqs MuiListItemText-primary-1vbj7lg">
+          Question 2
+        </span>
+      </div>
+    </li>,
+    <li
+      class="MuiListItem-root-y7zmik MuiListItem-default-etbuqc MuiListItem-gutters-1kxa4ur"
+      data-testid="question"
+    >
+      <div class="MuiListItemText-root-1gfkmoy">
+        <span class="MuiTypography-root-1o8c6gf MuiTypography-subheading-139ksqs MuiListItemText-primary-1vbj7lg">
+          Question 3
+        </span>
+      </div>
+    </li>
+  ];
 });

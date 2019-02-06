@@ -1,6 +1,11 @@
+import "../src/bootstrap";
+
 import React, { Fragment } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 import NewQuestion from "./NewQuestion";
 
 type Question = {
@@ -40,13 +45,13 @@ const QuestionList = () => (
         }
         const questions = data && data.questions ? data.questions : [];
         return (
-          <div>
+          <List>
             {questions.map(question => (
-              <li key={question.id} data-testid="question">
-                {question.question}
-              </li>
+              <ListItem key={question.id} data-testid="question">
+                <ListItemText primary={question.question} />
+              </ListItem>
             ))}
-          </div>
+          </List>
         );
       }}
     </Query>

@@ -1,7 +1,11 @@
+import "../src/bootstrap";
+
 import React, { Fragment, useState } from "react";
-import { TextInputField } from "evergreen-ui";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import styled from "@emotion/styled";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import { QUESTIONS_QUERY } from "./QuestionList";
 
 export const NEW_QUESTION_MUTATION = gql`
@@ -16,6 +20,12 @@ export const NEW_QUESTION_MUTATION = gql`
       hasBeenApproved
     }
   }
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
 `;
 
 export default () => {
@@ -50,21 +60,22 @@ export default () => {
             return <div>Loading...</div>;
           }
           return (
-            <form
+            <StyledForm
               data-test="form"
               onSubmit={async e => {
                 e.preventDefault();
                 const response = await addQuestion();
               }}
             >
-              <TextInputField
+              <TextField
                 id="question"
                 label="Question"
                 value={question}
                 onChange={handleChange}
+                margin="normal"
               />
-              <button type="submit">Submit</button>
-            </form>
+              <Button type="submit">Submit</Button>
+            </StyledForm>
           );
         }}
       </Mutation>
