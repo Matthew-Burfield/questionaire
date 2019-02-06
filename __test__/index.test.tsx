@@ -97,37 +97,3 @@ describe("<index />", () => {
     // Make sure new question is added to the end of the list
     expect(newQuestions[3].innerHTML.includes(question)).toBe(true);
   });
-
-  const aa = [
-    <li
-      class="MuiListItem-root-y7zmik MuiListItem-default-etbuqc MuiListItem-gutters-1kxa4ur"
-      data-testid="question"
-    >
-      <div class="MuiListItemText-root-1gfkmoy">
-        <span class="MuiTypography-root-1o8c6gf MuiTypography-subheading-139ksqs MuiListItemText-primary-1vbj7lg">
-          Question 1
-        </span>
-      </div>
-    </li>,
-    <li
-      class="MuiListItem-root-y7zmik MuiListItem-default-etbuqc MuiListItem-gutters-1kxa4ur"
-      data-testid="question"
-    >
-      <div class="MuiListItemText-root-1gfkmoy">
-        <span class="MuiTypography-root-1o8c6gf MuiTypography-subheading-139ksqs MuiListItemText-primary-1vbj7lg">
-          Question 2
-        </span>
-      </div>
-    </li>,
-    <li
-      class="MuiListItem-root-y7zmik MuiListItem-default-etbuqc MuiListItem-gutters-1kxa4ur"
-      data-testid="question"
-    >
-      <div class="MuiListItemText-root-1gfkmoy">
-        <span class="MuiTypography-root-1o8c6gf MuiTypography-subheading-139ksqs MuiListItemText-primary-1vbj7lg">
-          Question 3
-        </span>
-      </div>
-    </li>
-  ];
-});
