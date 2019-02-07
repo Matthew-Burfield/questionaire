@@ -9,8 +9,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import NewQuestion from "./NewQuestion";
 
 type Question = {
@@ -37,21 +35,6 @@ export const QUESTIONS_QUERY = gql`
   }
 `;
 
-const styles = theme => ({
-  thumbsUp: {
-    "&:hover": {
-      color: "blue",
-      cursor: "pointer"
-    }
-  },
-  thumbsDown: {
-    "&:hover": {
-      color: "red",
-      cursor: "pointer"
-    }
-  }
-});
-
 const StyledThumbsUp = styled(ThumbUpIcon)`
   && {
     &:hover {
@@ -64,7 +47,7 @@ const StyledThumbsUp = styled(ThumbUpIcon)`
 const StyledThumbsDown = styled(ThumbDownIcon)`
   && {
     &:hover {
-      color: red;
+      color: ${(props, context) => "red"};
       cursor: pointer;
     }
   }
@@ -106,4 +89,4 @@ const QuestionList = props => (
   </Fragment>
 );
 
-export default withStyles(styles)(QuestionList);
+export default QuestionList;
