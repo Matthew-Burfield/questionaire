@@ -3,12 +3,14 @@ import "../src/bootstrap";
 import React, { Fragment } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import styled from "@emotion/styled";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import NewQuestion from "./NewQuestion";
 
 type Question = {
@@ -37,18 +39,36 @@ export const QUESTIONS_QUERY = gql`
 
 const styles = theme => ({
   thumbsUp: {
-    color: "blue",
     "&:hover": {
-      color: theme.primary
+      color: "blue",
+      cursor: "pointer"
     }
   },
   thumbsDown: {
-    color: "red",
     "&:hover": {
-      color: theme.secondary
+      color: "red",
+      cursor: "pointer"
     }
   }
 });
+
+const StyledThumbsUp = styled(ThumbUpIcon)`
+  && {
+    &:hover {
+      color: blue;
+      cursor: pointer;
+    }
+  }
+`;
+
+const StyledThumbsDown = styled(ThumbDownIcon)`
+  && {
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+  }
+`;
 
 const QuestionList = props => (
   <Fragment>
@@ -66,8 +86,16 @@ const QuestionList = props => (
           <List>
             {questions.map(question => (
               <ListItem key={question.id} data-testid="question">
-                <ThumbUpIcon className={props.thumbsUp} />
-                <ThumbDownIcon className={props.thumbsDown} />
+                <StyledThumbsUp
+                  onClick={() =>
+                    console.warn("thumbs up clicked for ", question)
+                  }
+                />
+                <StyledThumbsDown
+                  onClick={() =>
+                    console.warn("thumbs down clicked for ", question)
+                  }
+                />
                 <ListItemText primary={question.question} />
               </ListItem>
             ))}
