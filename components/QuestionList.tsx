@@ -19,6 +19,8 @@ type Question = {
   thumbsDownCount: number;
   hasBeenAsked: boolean;
   hasBeenApproved: boolean;
+  questionsRequireApproval: boolean;
+  votes: Vote;
 };
 
 export const QUESTIONS_QUERY = gql`
@@ -67,21 +69,28 @@ const QuestionList = props => (
         const questions = data && data.questions ? data.questions : [];
         return (
           <List>
-            {questions.map(question => (
-              <ListItem key={question.id} data-testid="question">
-                <StyledThumbsUp
-                  onClick={() =>
-                    console.warn("thumbs up clicked for ", question)
-                  }
-                />
-                <StyledThumbsDown
-                  onClick={() =>
-                    console.warn("thumbs down clicked for ", question)
-                  }
-                />
-                <ListItemText primary={question.question} />
-              </ListItem>
-            ))}
+            {questions
+              .sort((a, b) =>
+                a.thumbsUpCount - a.thumbsDownCount >
+                b.thumbsUpCount - b.thumbsDownCount
+                  ? -1
+                  : 1
+              )
+              .map(question => (
+                <ListItem key={question.id} data-testid="question">
+                  <StyledThumbsUp
+                    onClick={() =>
+                      console.warn("thumbs up clicked for ", question)
+                    }
+                  />
+                  <StyledThumbsDown
+                    onClick={() =>
+                      console.warn("thumbs down clicked for ", question)
+                    }
+                  />
+                  <ListItemText primary={question.question} />
+                </ListItem>
+              ))}
           </List>
         );
       }}
