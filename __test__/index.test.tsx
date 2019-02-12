@@ -97,3 +97,4 @@ describe("<index />", () => {
     // Make sure new question is added to the end of the list
     expect(newQuestions[3].innerHTML.includes(question)).toBe(true);
   });
+});
