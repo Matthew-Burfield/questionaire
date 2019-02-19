@@ -10,7 +10,7 @@ import { QUESTIONS_QUERY } from "./QuestionList";
 
 export const NEW_QUESTION_MUTATION = gql`
   mutation NEW_QUESTION_MUTATION($question: String!) {
-    addQuestion(question: $question) {
+    createQuestion(question: $question) {
       id
       sessionId
       question
