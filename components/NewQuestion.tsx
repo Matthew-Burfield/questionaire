@@ -30,9 +30,9 @@ const StyledForm = styled.form`
 
 export default () => {
   const [question, setValue] = useState("");
-  const update = (cache, { data: { addQuestion } }) => {
+  const update = (cache, { data: { createQuestion } }) => {
     const data = cache.readQuery({ query: QUESTIONS_QUERY });
-    const questions = [...data.questions, addQuestion];
+    const questions = [...data.questions, createQuestion];
     setValue("");
     cache.writeQuery({
       query: QUESTIONS_QUERY,
@@ -52,7 +52,7 @@ export default () => {
         variables={{ question }}
         update={update}
       >
-        {(addQuestion, { loading, error }) => {
+        {(createQuestion, { loading, error }) => {
           if (error) {
             return <div>Error: {error}</div>;
           }
@@ -64,7 +64,7 @@ export default () => {
               data-test="form"
               onSubmit={async e => {
                 e.preventDefault();
-                const response = await addQuestion();
+                const response = await createQuestion();
               }}
             >
               <TextField
